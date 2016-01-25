@@ -24,7 +24,6 @@ class TableViewController: UIViewController {
        //2станем у тейбл вью его делегатом и датасорсом
         tableView.delegate   = self
         tableView.dataSource = self
-        
     }
     
     //настроим данные
@@ -64,8 +63,12 @@ extension TableViewController: UITableViewDataSource {
         // Запросить прототип ячейки у TableView
         let cell = tableView.dequeueReusableCellWithIdentifier("JustACellID", forIndexPath: indexPath)
         
+        let fontName = items[indexPath.row]
+        let font = UIFont(name: fontName, size: 14)
+
         //Зная, что по indexPath.row у нас лежит конкретный текст для конкретной ячейки вставим его туда
         cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.font = font
         
         //вернем ячейку
         return cell
